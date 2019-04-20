@@ -1,0 +1,16 @@
+	cmpi r0 1		;если r0 = 1, выводим 1
+	jeq dol
+	mul r1 r0 0		;r1=r0*r1
+	subi r0 1		;r0=r0-1
+	calli fact
+dol:
+	ret r0 0
+main:
+	syscall r0 100		;считываем аргумент в r0
+	lc r1 1			;r1 содержит результат
+	cmpi r0 0		;если r0 = 0, выводим 1
+	jeq main
+	calli fact
+	syscall r1 102		;выводим результат
+	syscall r0 0
+	end main
